@@ -3,9 +3,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { TripsIndex } from "./TripsIndex";
 import { TripsNew } from "./TripsNew";
+import { Modal } from "./Modal";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
+  const [isTripsShowVisible, setIsTripsShowVisible] = useState({});
+  const [currentTrip, setCurrentTrip] = useState({});
 
   const handleIndexTrips = () => {
     console.log("handleIndexTrips");
@@ -23,13 +26,27 @@ export function Content() {
     });
   };
 
+  const handleShowTrip = (trip) => {
+    console.log("handleShowTrip", trip);
+    setIsTripsShowVisible(true);
+    setCurrentTrip(trip);
+  };
+
+  const handleClose = () => {
+    console.log("handleClose");
+    setIsTripsShowVisible(false);
+  };
+
   useEffect(handleIndexTrips, []);
 
   return (
     <div>
-      <TripsNew onCreateTrips={handleCreateTrips} />
       <h1>Trippin</h1>
-      <TripsIndex trips={trips} />
+      <TripsNew onCreateTrips={handleCreateTrips} />
+      <TripsIndex trips={trips} onShowTrip={handleShowTrip} />
+      <Modal show={isTripsShowVisible} onClose={handleClose}>
+        + <h1>Test</h1>
+      </Modal>
     </div>
   );
 }

@@ -11,6 +11,7 @@ export function TripsIndex(props) {
           {/* <p>Places to visit: {trip.places}</p> */}
           <p>Start date: {trip.start_time}</p>
           <p>End date: {trip.end_time}</p>
+          <button onClick={() => props.onShowTrip(trip)}>Places to See</button>
         </div>
       ))}
     </div>
