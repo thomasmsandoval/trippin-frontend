@@ -1,5 +1,15 @@
 /* eslint-disable react/prop-types */
 export function TripsShow(props) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const params = new FormData(event.target);
+    props.onUpdateTrip(props.trip.id, params, () => event.target.reset());
+  };
+
+  const handleClick = () => {
+    props.onDestroyTrip(props.trip.id);
+  };
+
   return (
     <div>
       <h1>Trip information</h1>
@@ -7,7 +17,7 @@ export function TripsShow(props) {
       <p>Image: {props.trip.image_url}</p>
       <p>Start Date: {props.trip.start_time}</p>
       <p>End Date: {props.trip.end_time}</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           Title: <input defaultValue={props.trip.title} name="title" type="text" />
         </div>
@@ -20,7 +30,9 @@ export function TripsShow(props) {
         <div>
           End Date: <input defaultValue={props.trip.end_time} name="end date" type="datetime" />
         </div>
+        <button type="submit">Update Trip</button>
       </form>
+      <button onClick={handleClick}>Delete Trip</button>
     </div>
   );
 }
