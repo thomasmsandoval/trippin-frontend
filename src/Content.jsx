@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { TripsIndex } from "./TripsIndex";
 import { TripsNew } from "./TripsNew";
 import { Modal } from "./Modal";
+import { TripsShow } from "./TripsShow";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
@@ -45,7 +46,7 @@ export function Content() {
       <TripsNew onCreateTrips={handleCreateTrips} />
       <TripsIndex trips={trips} onShowTrip={handleShowTrip} />
       <Modal show={isTripsShowVisible} onClose={handleClose}>
-        + <h1>Test</h1>
+        <TripsShow trip={currentTrip} />
       </Modal>
     </div>
   );
