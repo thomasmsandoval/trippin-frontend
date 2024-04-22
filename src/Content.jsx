@@ -1,9 +1,13 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { TripsIndex } from "./TripsIndex";
 import { TripsNew } from "./TripsNew";
 import { TripsShow } from "./TripsShow";
+import { PlacesIndex } from "./PlacesIndex";
+import { PlacesNew } from "./PlacesNew";
+import { PlacesShow } from "./PlacesShow";
 import { Modal } from "./Modal";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
@@ -13,6 +17,9 @@ export function Content() {
   const [trips, setTrips] = useState([]);
   const [isTripsShowVisible, setIsTripsShowVisible] = useState(false);
   const [currentTrip, setCurrentTrip] = useState({});
+  const [places, setPlaces] = useState([]);
+  const [isPlacesShowVisible, setIsPlacesShowVisible] = useState(false);
+  const [currentPlace, setCurrentPlace] = useState({});
 
   const handleIndexTrips = () => {
     console.log("handleIndexTrips");
@@ -22,11 +29,25 @@ export function Content() {
     });
   };
 
-  const handleCreateTrips = (params, successCallback) => {
+  const handleIndexPlaces = () => {
+    console.log("handleIndexPlaces");
+    axios.get("http://localhost:3000/trips.json").then((response) => {
+      console.log(response.data);
+      setTrips(response.data);
+    });
+  };
+
+  const handleCreateTrips = (params) => {
     console.log("handleCreateTrip", params);
     axios.post("http://localhost:3000/trips.json", params).then((response) => {
       setTrips([...trips, response.data]);
-      successCallback();
+    });
+  };
+
+  const handleCreatePlaces = (params) => {
+    console.log("handleCreatePlace", params);
+    axios.post("http://localhost:3000/trips.json", params).then((response) => {
+      setTrips([...trips, response.data]);
     });
   };
 
@@ -36,21 +57,54 @@ export function Content() {
     setCurrentTrip(trip);
   };
 
+  const handleShowPlace = (place) => {
+    console.log("handleShowPlace", place);
+    setIsTripsShowVisible(true);
+    setCurrentTrip(place);
+  };
+
   const handleUpdateTrip = (id, params, successCallback) => {
     console.log("handleUpdateTrip", params);
-    axios.patch(`http://localhost:3000/trips/${id}.json`, params).then((response) => {
-      setTrips(
-        trips.map((tip) => {
-          if (trips.id === response.data.id) {
-            return response.data;
-          } else {
-            return trips;
-          }
-        })
-      );
-      successCallback();
-      handleClose();
-    });
+    axios
+      .patch(`http://localhost:3000/trips/${id}.json`, params)
+      .then((response) => {
+        setTrips(
+          trips.map((trip) => {
+            if (trip.id === response.data.id) {
+              return response.data;
+            } else {
+              return trip;
+            }
+          })
+        );
+        successCallback();
+        handleClose();
+      })
+      .catch((error) => {
+        console.error("Error updating trip:", error);
+      });
+  };
+
+  const handleUpdatePlace = (id, params, successCallback) => {
+    console.log("handleUpdatePlace", params);
+    axios
+      .patch(`http://localhost:3000/trips/${id}.json`, params)
+      .then((response) => {
+        setPlaces(
+          places.map((place) => {
+            if (place.id === response.data.id) {
+              return response.data;
+            } else {
+              return place;
+            }
+          })
+        );
+        successCallback();
+        handleClose();
+      })
+      .catch((error) => {
+        console.error("Error updating place:", error);
+      });
   };
 
   const handleClose = () => {
@@ -58,26 +112,38 @@ export function Content() {
     setIsTripsShowVisible(false);
   };
 
-  const handleDestroyTrip = (id) => {
-    console.log("handleDestroyTrip", id);
-    axios.delete(`http://localhost:3000/trips/${id}.json`).then((response) => {
-      setTrips(trips.filter((trip) => trip.id !== id));
+  const handleDestroyTrip = (trip) => {
+    console.log("handleDestroyTrip", trip.id);
+    axios.delete(`http://localhost:3000/trips/${trip.id}.json`).then((response) => {
+      setTrips(trips.filter((t) => t.id !== trip.id));
+      handleClose();
+    });
+  };
+
+  const handleDestroyPlace = (place) => {
+    console.log("handleDestroyTrip", place.id);
+    axios.delete(`http://localhost:3000/trips/${trip.id}.json`).then((response) => {
+      setPlaces(places.filter((p) => p.id !== place.id));
       handleClose();
     });
   };
 
   useEffect(handleIndexTrips, []);
+  useEffect(handleIndexPlaces, []);
 
   return (
     <div>
       <Login />
       <LogoutLink />
       <Signup />
-      <h1>Trippin</h1>
       <TripsNew onCreateTrips={handleCreateTrips} />
+      <PlacesNew onCreatePlaces={handleCreatePlaces} />
+      <h1>Trippin</h1>
       <TripsIndex trips={trips} onShowTrip={handleShowTrip} />
+      <PlacesIndex places={places} onShowPlace={handleShowPlace} />
       <Modal show={isTripsShowVisible} onClose={handleClose}>
         <TripsShow trip={currentTrip} onUpdateTrip={handleUpdateTrip} onDestroyTrip={handleDestroyTrip} />
+        <PlacesShow place={currentPlace} onupdatePlace={handleUpdatePlace} onDestroyPlace={handleDestroyPlace} />
       </Modal>
     </div>
   );

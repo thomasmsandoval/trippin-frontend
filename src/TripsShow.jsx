@@ -7,7 +7,7 @@ export function TripsShow(props) {
   };
 
   const handleClick = () => {
-    props.onDestroyTrip(props.trip.id);
+    props.onDestroyTrip(props.trip);
   };
 
   return (
@@ -22,13 +22,13 @@ export function TripsShow(props) {
           Title: <input defaultValue={props.trip.title} name="title" type="text" />
         </div>
         <div>
-          Image: <input defaultValue={props.trip.image_url} name="image" type="text" />
+          Image: <input defaultValue={props.trip.image_url} name="image_url" type="text" />
         </div>
         <div>
-          Start Date: <input defaultValue={props.trip.start_time} name="start date" type="datetime" />
+          Start Date: <input defaultValue={props.trip.start_time} name="start_time" type="datetime" />
         </div>
         <div>
-          End Date: <input defaultValue={props.trip.end_time} name="end date" type="datetime" />
+          End Date: <input defaultValue={props.trip.end_time} name="end_time" type="datetime" />
         </div>
         <button type="submit">Update Trip</button>
       </form>
