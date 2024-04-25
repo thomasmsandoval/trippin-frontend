@@ -31,9 +31,9 @@ export function Content() {
 
   const handleIndexPlaces = () => {
     console.log("handleIndexPlaces");
-    axios.get("http://localhost:3000/trips.json").then((response) => {
+    axios.get("http://localhost:3000/places.json").then((response) => {
       console.log(response.data);
-      setTrips(response.data);
+      setPlaces(response.data);
     });
   };
 
@@ -46,8 +46,8 @@ export function Content() {
 
   const handleCreatePlaces = (params) => {
     console.log("handleCreatePlace", params);
-    axios.post("http://localhost:3000/trips.json", params).then((response) => {
-      setTrips([...trips, response.data]);
+    axios.post("http://localhost:3000/places.json", params).then((response) => {
+      setPlacess([...places, response.data]);
     });
   };
 
@@ -59,8 +59,8 @@ export function Content() {
 
   const handleShowPlace = (place) => {
     console.log("handleShowPlace", place);
-    setIsTripsShowVisible(true);
-    setCurrentTrip(place);
+    setIsPlacesShowVisible(true);
+    setCurrentPlace(place);
   };
 
   const handleUpdateTrip = (id, params, successCallback) => {
@@ -121,8 +121,8 @@ export function Content() {
   };
 
   const handleDestroyPlace = (place) => {
-    console.log("handleDestroyTrip", place.id);
-    axios.delete(`http://localhost:3000/trips/${trip.id}.json`).then((response) => {
+    console.log("handleDestroyPlace", place.id);
+    axios.delete(`http://localhost:3000/places/${place.id}.json`).then((response) => {
       setPlaces(places.filter((p) => p.id !== place.id));
       handleClose();
     });
@@ -137,14 +137,14 @@ export function Content() {
       <LogoutLink />
       <Signup />
       <TripsNew onCreateTrips={handleCreateTrips} />
-      <PlacesNew onCreatePlaces={handleCreatePlaces} />
       <h1>Trippin</h1>
       <TripsIndex trips={trips} onShowTrip={handleShowTrip} />
-      <PlacesIndex places={places} onShowPlace={handleShowPlace} />
       <Modal show={isTripsShowVisible} onClose={handleClose}>
         <TripsShow trip={currentTrip} onUpdateTrip={handleUpdateTrip} onDestroyTrip={handleDestroyTrip} />
-        <PlacesShow place={currentPlace} onupdatePlace={handleUpdatePlace} onDestroyPlace={handleDestroyPlace} />
+        <PlacesNew onCreatePlaces={handleCreatePlaces} />
       </Modal>
+      <PlacesIndex places={places} onShowPlace={handleShowPlace} />
+      <PlacesShow place={currentPlace} onUpdatePlace={handleUpdatePlace} onDestroyPlace={handleDestroyPlace} />
     </div>
   );
 }

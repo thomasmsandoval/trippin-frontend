@@ -14,21 +14,21 @@ export function TripsShow(props) {
     <div>
       <h1>Trip information</h1>
       <p>Title: {props.trip.title}</p>
-      <p>Image: {props.trip.image_url}</p>
+      {/* <p>Image: {props.trip.image_url}</p> */}
       <p>Start Date: {props.trip.start_time}</p>
       <p>End Date: {props.trip.end_time}</p>
       <form onSubmit={handleSubmit}>
         <div>
           Title: <input defaultValue={props.trip.title} name="title" type="text" />
         </div>
+        {/* <div>
+          Image: <input defaultValue={props.trip.image_url} name="image_url" type="url" />
+        </div> */}
         <div>
-          Image: <input defaultValue={props.trip.image_url} name="image_url" type="text" />
+          Start Date: <input defaultValue={props.trip.start_time} name="start_time" type="datetime-local" />
         </div>
         <div>
-          Start Date: <input defaultValue={props.trip.start_time} name="start_time" type="datetime" />
-        </div>
-        <div>
-          End Date: <input defaultValue={props.trip.end_time} name="end_time" type="datetime" />
+          End Date: <input defaultValue={props.trip.end_time} name="end_time" type="datetime-local" />
         </div>
         <button type="submit">Update Trip</button>
       </form>

@@ -2,7 +2,6 @@
 export function PlacesNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("handleSubmit");
     const params = new FormData(event.target);
     props.onCreatePlaces(params);
     event.target.reset();
@@ -13,22 +12,22 @@ export function PlacesNew(props) {
       <h1>Must See Places</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          Name: <input name="name" type="text" />
+          Name: <input name="name" type="text" required />
         </div>
         <div>
-          Adress: <input name="adress" type="text" />
+          Address: <input name="address" type="text" required />
         </div>
         <div>
-          Description: <input name="description" type="text" />
+          Description: <input name="description" type="text" required />
         </div>
         <div>
           Image: <input name="image_url" type="text" />
         </div>
         <div>
-          Start Time: <input name="start_time" type="datetime" />
+          Start Time: <input name="start_time" type="datetime-local" required />
         </div>
         <div>
-          End Time: <input name="end_time" type="datetime" />
+          End Time: <input name="end_time" type="datetime-local" required />
         </div>
         <button type="submit">Create Place</button>
       </form>
