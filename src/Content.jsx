@@ -18,7 +18,7 @@ export function Content() {
   const [isTripsShowVisible, setIsTripsShowVisible] = useState(false);
   const [currentTrip, setCurrentTrip] = useState({});
   const [places, setPlaces] = useState([]);
-  const [isPlacesShowVisible, setIsPlacesShowVisible] = useState(false);
+  // const [isPlacesShowVisible, setIsPlacesShowVisible] = useState(false);
   const [currentPlace, setCurrentPlace] = useState({});
 
   const handleIndexTrips = () => {
@@ -44,17 +44,19 @@ export function Content() {
     });
   };
 
-  const handleCreatePlaces = (params) => {
-    console.log("handleCreatePlace", params);
-    axios.post("http://localhost:3000/places.json", params).then((response) => {
-      setPlacess([...places, response.data]);
-    });
+  const handleCreatePlaceWithinTrip = (tripId, placeParams) => {
+    axios
+      .post(`http://localhost:3000/trips/${tripId}/places.json`, placeParams)
+      .then((response) => {})
+      .catch((error) => {});
   };
 
   const handleShowTrip = (trip) => {
-    console.log("handleShowTrip", trip);
     setIsTripsShowVisible(true);
     setCurrentTrip(trip);
+    axios.get(`http://localhost:3000/trips/${trip.id}/places.json`).then((response) => {
+      setPlaces(response.data);
+    });
   };
 
   const handleShowPlace = (place) => {
@@ -140,11 +142,12 @@ export function Content() {
       <h1>Trippin</h1>
       <TripsIndex trips={trips} onShowTrip={handleShowTrip} />
       <Modal show={isTripsShowVisible} onClose={handleClose}>
-        <TripsShow trip={currentTrip} onUpdateTrip={handleUpdateTrip} onDestroyTrip={handleDestroyTrip} />
-        <PlacesNew onCreatePlaces={handleCreatePlaces} />
+        <TripsShow trip={currentTrip} onDestroyTrip={handleDestroyTrip} />
+        {/* Conditionally render PlacesNew component if the trip modal is visible */}
+        {isTripsShowVisible && <PlacesNew tripId={currentTrip.id} onCreatePlaces={handleCreatePlaceWithinTrip} />}
+        <PlacesIndex places={places} />
       </Modal>
-      <PlacesIndex places={places} onShowPlace={handleShowPlace} />
-      <PlacesShow place={currentPlace} onUpdatePlace={handleUpdatePlace} onDestroyPlace={handleDestroyPlace} />
+      <PlacesShow place={currentPlace} />
     </div>
   );
 }

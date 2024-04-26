@@ -2,7 +2,9 @@
 export function PlacesNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
-    const params = new FormData(event.target);
+    const formData = new FormData(event.target);
+    formData.append("trip_id", props.tripId);
+    const params = Object.fromEntries(formData.entries());
     props.onCreatePlaces(params);
     event.target.reset();
   };
