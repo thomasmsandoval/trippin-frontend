@@ -18,7 +18,7 @@ export function Content() {
   const [isTripsShowVisible, setIsTripsShowVisible] = useState(false);
   const [currentTrip, setCurrentTrip] = useState({});
   const [places, setPlaces] = useState([]);
-  const [isPlacesShowVisible, setIsPlacesShowVisible] = useState(false);
+  // const [isPlacesShowVisible, setIsPlacesShowVisible] = useState(false);
   const [currentPlace, setCurrentPlace] = useState({});
 
   useEffect(() => {
