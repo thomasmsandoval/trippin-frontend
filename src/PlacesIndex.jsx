@@ -2,7 +2,7 @@
 export function PlacesIndex(props) {
   return (
     <div>
-      <h1>All Places</h1>
+      <h1>Places to Visit</h1>
       {props.places.map((place, index) => (
         <div key={index}>
           <h2>{place.name}</h2>

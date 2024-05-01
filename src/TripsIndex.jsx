@@ -3,7 +3,7 @@
 export function TripsIndex(props) {
   return (
     <div>
-      <h1>All trips</h1>
+      <h1>Planned Trips</h1>
       {props.trips.map((trip, index) => (
         <div key={index}>
           <h2>{trip.title}</h2>

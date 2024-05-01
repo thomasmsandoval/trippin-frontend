@@ -21,19 +21,16 @@ export function Content() {
   const [isPlacesShowVisible, setIsPlacesShowVisible] = useState(false);
   const [currentPlace, setCurrentPlace] = useState({});
 
+  useEffect(() => {
+    handleIndexTrips();
+    // handleIndexPlaces();
+  }, []);
+
   const handleIndexTrips = () => {
     console.log("handleIndexTrips");
     axios.get("http://localhost:3000/trips.json").then((response) => {
       console.log(response.data);
       setTrips(response.data);
-    });
-  };
-
-  const handleIndexPlaces = () => {
-    console.log("handleIndexPlaces");
-    axios.get("http://localhost:3000/places.json").then((response) => {
-      console.log(response.data);
-      setPlaces(response.data);
     });
   };
 
@@ -46,16 +43,32 @@ export function Content() {
 
   const handleCreatePlaces = (params) => {
     console.log("handleCreatePlace", params);
-    axios.post("http://localhost:3000/places.json", params).then((response) => {
-      setPlacess([...places, response.data]);
-    });
+    axios
+      .post("http://localhost:3000/places.json", params)
+      .then((response) => {
+        setPlaces([...places, response.data]);
+        handleClose();
+      })
+      .catch((error) => {
+        console.error("Error creating place:", error);
+      });
   };
 
   const handleShowTrip = (trip) => {
-    console.log("handleShowTrip", trip);
     setIsTripsShowVisible(true);
     setCurrentTrip(trip);
+    axios.get(`http://localhost:3000/trips/${trip.id}/places.json`).then((response) => {
+      setPlaces(response.data);
+    });
   };
+
+  // const handleIndexPlaces = () => {
+  //   console.log("handleIndexPlaces");
+  //   axios.get("http://localhost:3000/places.json").then((response) => {
+  //     console.log(response.data);
+  //     setPlaces(response.data);
+  //   });
+  // };
 
   const handleShowPlace = (place) => {
     console.log("handleShowPlace", place);
@@ -128,9 +141,6 @@ export function Content() {
     });
   };
 
-  useEffect(handleIndexTrips, []);
-  useEffect(handleIndexPlaces, []);
-
   return (
     <div>
       <Login />
@@ -141,10 +151,10 @@ export function Content() {
       <TripsIndex trips={trips} onShowTrip={handleShowTrip} />
       <Modal show={isTripsShowVisible} onClose={handleClose}>
         <TripsShow trip={currentTrip} onUpdateTrip={handleUpdateTrip} onDestroyTrip={handleDestroyTrip} />
-        <PlacesNew onCreatePlaces={handleCreatePlaces} />
+        {isTripsShowVisible && <PlacesNew tripId={currentTrip.id} onCreatePlaces={handleCreatePlaces} />}
+        <PlacesIndex places={places} onShowPlace={handleShowPlace} />
       </Modal>
-      <PlacesIndex places={places} onShowPlace={handleShowPlace} />
-      <PlacesShow place={currentPlace} onUpdatePlace={handleUpdatePlace} onDestroyPlace={handleDestroyPlace} />
+      {/* <PlacesShow place={currentPlace} onUpdatePlace={handleUpdatePlace} onDestroyPlace={handleDestroyPlace} /> */}
     </div>
   );
 }

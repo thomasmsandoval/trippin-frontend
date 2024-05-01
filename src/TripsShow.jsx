@@ -21,9 +21,9 @@ export function TripsShow(props) {
         <div>
           Title: <input defaultValue={props.trip.title} name="title" type="text" />
         </div>
-        {/* <div>
+        <div>
           Image: <input defaultValue={props.trip.image_url} name="image_url" type="url" />
-        </div> */}
+        </div>
         <div>
           Start Date: <input defaultValue={props.trip.start_time} name="start_time" type="datetime-local" />
         </div>
