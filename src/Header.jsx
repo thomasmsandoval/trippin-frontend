@@ -1,6 +1,7 @@
 import { Modal } from "./Modal";
 import { Signup } from "./Signup";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const [isSignupVisible, setIsSignupVisible] = useState(false);
@@ -21,7 +22,7 @@ export function Header() {
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
-              Navbar
+              Trippin
             </a>
             <button
               className="navbar-toggler"
@@ -37,24 +38,29 @@ export function Header() {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <Link to="/" className="nav-link active" aria-current="page">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Features
-                  </a>
+                  <Link to="/trips/new" className="nav-link">
+                    Plan a New Trip
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Pricing
-                  </a>
+                  <Link className="nav-link" to="/login">
+                    Login
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a onClick={handleSignupShow} className="nav-link ">
+                  <Link className="nav-link" to="/logout">
+                    Logout
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="signup" onClick={handleSignupShow} className="nav-link ">
                     Signup
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

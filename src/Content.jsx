@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { TripsIndex } from "./TripsIndex";
 import { TripsNew } from "./TripsNew";
 import { TripsShow } from "./TripsShow";
@@ -142,19 +143,23 @@ export function Content() {
   };
 
   return (
-    <div>
-      <Login />
-      <LogoutLink />
-      {/* <Signup /> */}
-      <TripsNew onCreateTrips={handleCreateTrips} />
-      <h1>Trippin</h1>
-      <TripsIndex trips={trips} onShowTrip={handleShowTrip} />
-      <Modal show={isTripsShowVisible} onClose={handleClose}>
-        <TripsShow trip={currentTrip} onUpdateTrip={handleUpdateTrip} onDestroyTrip={handleDestroyTrip} />
-        {isTripsShowVisible && <PlacesNew tripId={currentTrip.id} onCreatePlaces={handleCreatePlaces} />}
-        <PlacesIndex places={places} onShowPlace={handleShowPlace} />
-      </Modal>
-      {/* <PlacesShow place={currentPlace} onUpdatePlace={handleUpdatePlace} onDestroyPlace={handleDestroyPlace} /> */}
-    </div>
+    <main>
+      <div>
+        <h1>Trippin</h1>
+        <Routes>
+          <Route path="/" element={<TripsIndex trips={trips} onShowTrip={handleShowTrip} />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<LogoutLink />} />
+          <Route path="/trips/new" element={<TripsNew onCreateTrips={handleCreateTrips} />} />
+        </Routes>
+        <Modal show={isTripsShowVisible} onClose={handleClose}>
+          <TripsShow trip={currentTrip} onUpdateTrip={handleUpdateTrip} onDestroyTrip={handleDestroyTrip} />
+          {isTripsShowVisible && <PlacesNew tripId={currentTrip.id} onCreatePlaces={handleCreatePlaces} />}
+          <PlacesIndex places={places} onShowPlace={handleShowPlace} />
+        </Modal>
+        {/* <PlacesShow place={currentPlace} onUpdatePlace={handleUpdatePlace} onDestroyPlace={handleDestroyPlace} /> */}
+      </div>
+    </main>
   );
 }
