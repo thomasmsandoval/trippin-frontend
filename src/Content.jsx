@@ -145,7 +145,7 @@ export function Content() {
     <div>
       <Login />
       <LogoutLink />
-      <Signup />
+      {/* <Signup /> */}
       <TripsNew onCreateTrips={handleCreateTrips} />
       <h1>Trippin</h1>
       <TripsIndex trips={trips} onShowTrip={handleShowTrip} />
