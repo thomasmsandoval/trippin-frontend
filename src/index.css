@@ -87,6 +87,11 @@ label {
   margin-right: 10px; /* Add space between label and input */
 }
 
+label {
+  display: block; /* Make label elements block-level */
+  margin-bottom: 5px; /* Add space between label and input */
+}
+
 .logout-link {
   font-size: 20px; /* Adjust the font size to your preference */
 }
