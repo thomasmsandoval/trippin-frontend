@@ -17,22 +17,26 @@ export function TripsShow(props) {
       {/* <p>Image: {props.trip.image_url}</p> */}
       <p>Start Date: {props.trip.start_time}</p>
       <p>End Date: {props.trip.end_time}</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Title: <input defaultValue={props.trip.title} name="title" type="text" />
+      <form onSubmit={handleSubmit} className="form-container">
+        <div className="form-group">
+          <label htmlFor="title">Title:</label>
+          <input defaultValue={props.trip.title} name="title" type="text" id="title" />
         </div>
-        <div>
-          Image: <input defaultValue={props.trip.image_url} name="image_url" type="url" />
+        <div className="form-group">
+          <label htmlFor="image_url">Image:</label>
+          <input defaultValue={props.trip.image_url} name="image_url" type="url" id="image_url" />
         </div>
-        <div>
-          Start Date: <input defaultValue={props.trip.start_time} name="start_time" type="datetime-local" />
+        <div className="form-group">
+          <label htmlFor="start_time">Start Date:</label>
+          <input defaultValue={props.trip.start_time} name="start_time" type="datetime-local" id="start_time" />
         </div>
-        <div>
-          End Date: <input defaultValue={props.trip.end_time} name="end_time" type="datetime-local" />
+        <div className="form-group">
+          <label htmlFor="end_time">End Date:</label>
+          <input defaultValue={props.trip.end_time} name="end_time" type="datetime-local" id="end_time" />
         </div>
         <button type="submit">Update Trip</button>
+        <button onClick={handleClick}>Delete Trip</button>
       </form>
-      <button onClick={handleClick}>Delete Trip</button>
     </div>
   );
 }

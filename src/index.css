@@ -85,7 +85,9 @@ button:hover {
 }
 
 label {
-  margin-right: 10px; /* Add space between label and input */
+  margin-right: 10px;
+    display: block;
+    margin-bottom: 1px;
 }
 
 label {
@@ -95,4 +97,8 @@ label {
 
 .logout-link {
   font-size: 20px; /* Adjust the font size to your preference */
+}
+
+.form-group {
+  margin-bottom: 10px; /* Reduce space between form groups */
 }
