@@ -16,18 +16,22 @@ export function TripsNew(props) {
   return (
     <div>
       <h1>Plan a New Trip</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Title: <input name="title" type="text" required />
+      <form onSubmit={handleSubmit} className="form-container">
+        <div className="form-group">
+          <label htmlFor="title">Title:</label>
+          <input name="title" type="text" id="title" required />
         </div>
-        <div>
-          Image: <input name="image_url" type="text" />
+        <div className="form-group">
+          <label htmlFor="image_url">Image:</label>
+          <input name="image_url" type="text" id="image_url" />
         </div>
-        <div>
-          Start Date: <input name="start_time" type="datetime-local" required />
+        <div className="form-group">
+          <label htmlFor="start_time">Start Date:</label>
+          <input name="start_time" type="datetime-local" id="start_time" required />
         </div>
-        <div>
-          End Date: <input name="end_time" type="datetime-local" required />
+        <div className="form-group">
+          <label htmlFor="end_time">End Date:</label>
+          <input name="end_time" type="datetime-local" id="end_time" required />
         </div>
         <button type="submit">Create Trip</button>
       </form>

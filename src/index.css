@@ -3,9 +3,89 @@ html {
 }
 
 body {
-  background-image: url(https://static.vecteezy.com/system/resources/previews/036/154/638/non_2x/gradient-abstract-backgrounds-of-northern-lights-aurora-borealis-sky-soft-tender-purple-green-pink-yellow-and-blue-gradients-for-app-web-design-webpages-banners-greeting-cards-design-vector.jpg);
+  background-image: url(https://previews.123rf.com/images/mertsalov/mertsalov1407/mertsalov140700078/30181037-travel-background-icon-app.jpg);
   font-family: "Mouse Memoirs", sans-serif;
   font-weight: 400;
   font-style: oblique;
+  color: rgb(58, 55, 54);
 }
 
+header {
+  background-color: rgb(175, 225, 174);
+  margin: 0%;
+  padding: 0%;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}  
+
+
+.card:hover{
+  box-shadow: 0px 10px 50px rgb(0 0 0/ 12);
+}
+
+.card {
+  width: 500px; 
+  height: 450px;
+  background-color: rgb(148, 216, 147); 
+  border-radius: 5px; 
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2); 
+  overflow: hidden;
+  position: relative;
+}
+
+.card img {
+  width: 500px;
+  height: 250px;
+  object-fit: cover;
+} 
+
+.card-content {
+  position: relative;
+  z-index: 1;
+}
+
+input {
+  background-color: rgb(215, 201, 103); 
+}
+
+
+button {
+  background-color:rgb(148, 216, 147); 
+  color: rgb(58, 55, 54); 
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+
+button:hover {
+  background-color: rgb(227, 242, 172); 
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 15px; /* Add space between form groups */
+}
+
+label {
+  margin-right: 10px; /* Add space between label and input */
+}
+
+.logout-link {
+  font-size: 20px; /* Adjust the font size to your preference */
+}

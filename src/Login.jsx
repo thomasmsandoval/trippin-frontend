@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { LogoutLink } from "./LogoutLink";
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -29,7 +30,7 @@ export function Login() {
   };
 
   return (
-    <div id="login">
+    <div id="login" className="form-container">
       <h1>Login</h1>
       <ul>
         {errors.map((error) => (
@@ -37,14 +38,17 @@ export function Login() {
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <div>
-          Email: <input name="email" type="email" />
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input name="email" type="email" id="email" />
         </div>
-        <div>
-          Password: <input name="password" type="password" />
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input name="password" type="password" id="password" />
         </div>
         <button type="submit">Login</button>
       </form>
+      {jwt && <LogoutLink />} {/* Render LogoutLink if JWT token exists */}
     </div>
   );
 }

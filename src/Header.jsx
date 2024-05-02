@@ -19,7 +19,7 @@ export function Header() {
         <Signup />
       </Modal>
       <header>
-        <nav className="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
               Trippin
@@ -52,11 +52,11 @@ export function Header() {
                     Login
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link className="nav-link" to="/logout">
                     Logout
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link to="signup" onClick={handleSignupShow} className="nav-link ">
                     Signup

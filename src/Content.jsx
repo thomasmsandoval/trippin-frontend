@@ -150,7 +150,7 @@ export function Content() {
           <Route path="/" element={<TripsIndex trips={trips} onShowTrip={handleShowTrip} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<LogoutLink />} />
+          {/* <Route path="/logout" element={<LogoutLink />} /> */}
           <Route path="/trips/new" element={<TripsNew onCreateTrips={handleCreateTrips} />} />
         </Routes>
         <Modal show={isTripsShowVisible} onClose={handleClose}>
