@@ -76,7 +76,8 @@ button:hover {
 .form-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  padding: 1%;
 }
 
 .form-group {

@@ -11,24 +11,30 @@ export function PlacesNew(props) {
   return (
     <div>
       <h1>Must See Places</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Name: <input name="name" type="text" required />
+      <form onSubmit={handleSubmit} className="form-container">
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input name="name" type="text" id="name" required />
         </div>
-        <div>
-          Address: <input name="address" type="text" required />
+        <div className="form-group">
+          <label htmlFor="address">Address:</label>
+          <input name="address" type="text" id="address" required />
         </div>
-        <div>
-          Description: <input name="description" type="text" required />
+        <div className="form-group">
+          <label htmlFor="description">Description:</label>
+          <input name="description" type="text" id="description" required />
         </div>
-        <div>
-          Image: <input name="image_url" type="text" />
+        <div className="form-group">
+          <label htmlFor="image_url">Image:</label>
+          <input name="image_url" type="text" id="image_url" />
         </div>
-        <div>
-          Start Time: <input name="start_time" type="datetime-local" required />
+        <div className="form-group">
+          <label htmlFor="start_time">Start Time:</label>
+          <input name="start_time" type="datetime-local" id="start_time" required />
         </div>
-        <div>
-          End Time: <input name="end_time" type="datetime-local" required />
+        <div className="form-group">
+          <label htmlFor="end_time">End Time:</label>
+          <input name="end_time" type="datetime-local" id="end_time" required />
         </div>
         <button type="submit">Create Place</button>
       </form>
