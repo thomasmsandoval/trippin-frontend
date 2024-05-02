@@ -18,8 +18,8 @@ header {
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
 }  
 
 
@@ -38,9 +38,10 @@ header {
 }
 
 .card img {
-  width: 500px;
+  width: 100%;
   height: 250px;
   object-fit: cover;
+  padding: 0 20px;
 } 
 
 .card-content {
