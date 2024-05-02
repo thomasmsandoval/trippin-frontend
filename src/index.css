@@ -1,3 +1,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+body {
+  background-image: url(https://static.vecteezy.com/system/resources/previews/036/154/638/non_2x/gradient-abstract-backgrounds-of-northern-lights-aurora-borealis-sky-soft-tender-purple-green-pink-yellow-and-blue-gradients-for-app-web-design-webpages-banners-greeting-cards-design-vector.jpg);
+  font-family: "Mouse Memoirs", sans-serif;
+  font-weight: 400;
+  font-style: oblique;
+}
+

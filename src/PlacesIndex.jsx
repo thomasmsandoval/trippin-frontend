@@ -11,7 +11,7 @@ export function PlacesIndex(props) {
           <p>Description: {place.description}</p>
           <p>Start date: {place.start_time}</p>
           <p>End date: {place.end_time}</p>
-          <button onClick={() => props.onShowPlace(place)}>Place Information</button>
+          {/* <button onClick={() => props.onShowPlace(place)}>Place Information</button> */}
         </div>
       ))}
     </div>

@@ -19,7 +19,7 @@ export function Header() {
         <Signup />
       </Modal>
       <header>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
               Trippin

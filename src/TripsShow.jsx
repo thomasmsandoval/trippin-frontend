@@ -14,7 +14,7 @@ export function TripsShow(props) {
     <div>
       <h1>Trip information</h1>
       <p>Title: {props.trip.title}</p>
-      <p>Image: {props.trip.image_url}</p>
+      {/* <p>Image: {props.trip.image_url}</p> */}
       <p>Start Date: {props.trip.start_time}</p>
       <p>End Date: {props.trip.end_time}</p>
       <form onSubmit={handleSubmit}>
