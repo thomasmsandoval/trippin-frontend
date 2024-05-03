@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Modal } from "./Modal";
 import { Signup } from "./Signup";
 import { useState } from "react";
@@ -15,9 +16,9 @@ export function Header() {
 
   return (
     <div>
-      <Modal show={isSignupVisible} onClose={handleClose}>
+      {/* <Modal show={isSignupVisible} onClose={handleClose}>
         <Signup />
-      </Modal>
+      </Modal> */}
       <header>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">

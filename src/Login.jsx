@@ -49,6 +49,13 @@ export function Login() {
         <button type="submit">Login</button>
       </form>
       {jwt && <LogoutLink />}
+      <div>
+        <img
+          src="https://i.cdn.turner.com/cnn/2009/SHOWBIZ/Movies/12/11/princess.frog.parents/t1larg.princess.disney.jpg"
+          alt="Description of the image"
+          style={{ width: "900px", height: "auto" }}
+        />
+      </div>
     </div>
   );
 }

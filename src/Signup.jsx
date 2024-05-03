@@ -13,7 +13,7 @@ export function Signup() {
       .then((response) => {
         console.log(response.data);
         event.target.reset();
-        window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
+        window.location.href = "/";
       })
       .catch((error) => {
         console.log(error.response.data.errors);
@@ -31,19 +31,30 @@ export function Signup() {
       </ul>
       <form onSubmit={handleSubmit}>
         <div>
-          Name: <input name="name" type="text" />
+          <label htmlFor="name">Name:</label>
+          <input name="name" type="text" id="name" />
         </div>
         <div>
-          Email: <input name="email" type="email" />
+          <label htmlFor="email">Email:</label>
+          <input name="email" type="email" id="email" />
         </div>
         <div>
-          Password: <input name="password" type="password" />
+          <label htmlFor="password">Password:</label>
+          <input name="password" type="password" id="password" />
         </div>
         <div>
-          Password confirmation: <input name="password_confirmation" type="password" />
+          <label htmlFor="password_confirmation">Password confirmation:</label>
+          <input name="password_confirmation" type="password" id="password_confirmation" />
         </div>
         <button type="submit">Signup</button>
       </form>
+      <div>
+        <img
+          src="https://images.bauerhosting.com/legacy/empire-tmdb/films/10198/images/wC5xdlg6WceCWUXQzS3pIwTfkEJ.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=undefined&q=80"
+          alt="Description of the image"
+          style={{ width: "900px", height: "auto" }}
+        />
+      </div>
     </div>
   );
 }
