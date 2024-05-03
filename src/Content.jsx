@@ -13,18 +13,19 @@ import { Modal } from "./Modal";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
+import { Footer } from "./Footer";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
   const [isTripsShowVisible, setIsTripsShowVisible] = useState(false);
   const [currentTrip, setCurrentTrip] = useState({});
   const [places, setPlaces] = useState([]);
-  // const [isPlacesShowVisible, setIsPlacesShowVisible] = useState(false);
+  const [isPlacesShowVisible, setIsPlacesShowVisible] = useState(false);
   const [currentPlace, setCurrentPlace] = useState({});
 
   useEffect(() => {
     handleIndexTrips();
-    // handleIndexPlaces();
+    handleIndexPlaces();
   }, []);
 
   const handleIndexTrips = () => {
@@ -63,13 +64,13 @@ export function Content() {
     });
   };
 
-  // const handleIndexPlaces = () => {
-  //   console.log("handleIndexPlaces");
-  //   axios.get("http://localhost:3000/places.json").then((response) => {
-  //     console.log(response.data);
-  //     setPlaces(response.data);
-  //   });
-  // };
+  const handleIndexPlaces = () => {
+    console.log("handleIndexPlaces");
+    axios.get("http://localhost:3000/places.json").then((response) => {
+      console.log(response.data);
+      setPlaces(response.data);
+    });
+  };
 
   const handleShowPlace = (place) => {
     console.log("handleShowPlace", place);
@@ -143,9 +144,9 @@ export function Content() {
   };
 
   return (
-    <main>
+    <main className="main">
       <div>
-        <h1>Trippin</h1>
+        <h1 className="content-heading">Trippin</h1>
         <Routes>
           <Route path="/" element={<TripsIndex trips={trips} onShowTrip={handleShowTrip} />} />
           <Route path="/signup" element={<Signup />} />
@@ -159,6 +160,7 @@ export function Content() {
           <PlacesIndex places={places} onShowPlace={handleShowPlace} />
         </Modal>
         {/* <PlacesShow place={currentPlace} onUpdatePlace={handleUpdatePlace} onDestroyPlace={handleDestroyPlace} /> */}
+        <Footer />
       </div>
     </main>
   );

@@ -35,6 +35,12 @@ export function TripsNew(props) {
         </div>
         <button type="submit">Create Trip</button>
       </form>
+      <div className="photo-container">
+        <img
+          src="https://attractionsmagazine.com/wp-content/uploads/2019/06/Disney-Wonder-Tiana.png"
+          alt="Trip Photo"
+        />
+      </div>
     </div>
   );
 }

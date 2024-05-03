@@ -21,7 +21,7 @@
   padding: 1em;
 } */
 
-.modal-main button.close {
+/* .modal-main button.close {
   font-size: 2em;
   background: none;
   border: none;
@@ -30,7 +30,7 @@
   right: 0.2em;
   color: rgb(135, 82, 17);
   transition: color 0.3s;
-  }
+  } */
 
   .modal-main button.close:hover {
     color: rgb(58, 55, 54); 
@@ -70,17 +70,18 @@
   }
 }
 
-
 .modal-main button.close {
   font-size: 2em;
   background: none;
   border: none;
-  position: absolute;
-  top: 0em;
-  right: 0.2em;
+  position: fixed;
+  top: 20px;
+  right: 20px;
   color: rgb(135, 82, 17);
   animation: pulse 0.5s infinite; 
 }
+
+
 
 .form-container {
   display: flex;

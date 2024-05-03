@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Header } from "./Header";
 import { Content } from "./Content";
 import { Footer } from "./Footer";
@@ -9,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Content />
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </div>
   );

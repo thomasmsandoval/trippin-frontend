@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
+
 export function TripsIndex(props) {
   return (
     <div id="trips-index">

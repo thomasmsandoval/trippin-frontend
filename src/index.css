@@ -4,11 +4,55 @@ html {
 
 body {
   background-image: url(https://previews.123rf.com/images/mertsalov/mertsalov1407/mertsalov140700078/30181037-travel-background-icon-app.jpg);
+  margin: 0;
   font-family: "Mouse Memoirs", sans-serif;
   font-weight: 400;
   font-style: oblique;
   color: rgb(58, 55, 54);
 }
+
+@keyframes sparkle {
+  0% { color: rgb(58, 55, 54); } 
+  20% { color: rgb(135, 82, 17); } 
+  40% { color: rgb(148, 216, 147); } 
+  60% { color: rgb(175, 225, 174); } 
+  80% { color: rgb(227, 242, 172); } 
+  100% { color: rgb(58, 55, 54); } 
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes ripple {
+  0% { box-shadow: 0 0 0 0 rgba(0, 0, 255, 0); } 
+  50% { box-shadow: 0 0 20px 10px rgba(0, 0, 255, 0); } 
+  100% { box-shadow: 0 0 0 0 rgba(0, 0, 255, 0); } 
+}
+
+
+.content-heading {
+  font-size: 5rem;
+  color: rgb(148, 216, 147);
+  animation: float 3s ease-in-out infinite, ripple 2s ease-in-out infinite, sparkle 5s ease-in-out infinite;
+}
+
+
+.main {
+  display: grid;
+  place-items: center; 
+  height: 100vh; 
+  grid-template-areas: "header" "cards";
+}
+
+.content-heading {
+  font-size: 5rem;
+  color: rgb(148, 216, 147);
+  grid-area: header;
+}
+
 
 header {
   background-color: rgb(175, 225, 174);
@@ -20,6 +64,7 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
+  grid-area: cards;
 }  
 
 
@@ -39,7 +84,7 @@ header {
 }
 
 .card:hover {
-  transform: scale(1.25); /* Enlarge the card by 10% when hovered over */
+  transform: scale(1.15); 
 }
 
 .card img {
@@ -106,4 +151,12 @@ label {
 
 .form-group {
   margin-bottom: 10px; 
+}
+
+footer {
+  background-color: rgb(58, 55, 54);
+  color: rgb(148, 216, 147);
+  padding: 20px;
+  text-align: center;
+  z-index: 1;
 }
